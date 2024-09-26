@@ -1,0 +1,2 @@
+experiment_id,C,R,Roots
+00,"['obstacle_pointcloud_based_validator', 'tensorrt_yolo', 'lidar_centerpoint', 'multi_object_tracker']",[],"['obstacle_pointcloud_based_validator', 'tensorrt_yolo', 'lidar_centerpoint', 'multi_object_tracker']"

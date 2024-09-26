@@ -1,0 +1,66 @@
+<scenarios>
+<scenario name="TestScene" type="TestScene" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!-- opendoor -->
+<scenario name="Opendoor" type="Opendoor" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!-- trafficCone -->
+<scenario name="TrafficCone" type="TrafficCone" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!-- Car -->
+<scenario name="Car" type="Car" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!-- Cone -->
+<scenario name="Cone" type="Cone" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!-- Truck -->
+<scenario name="Truck" type="Truck" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!-- pedestrian -->
+<scenario name="Pedestrian" type="Pedestrian" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!-- cyclist -->
+<scenario name="Cyclist" type="Cyclist" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!-- Sparse -->
+<scenario name="Sparse" type="Sparse" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!-- Vans -->
+<scenario name="Vans" type="Vans" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!-- HugeTruck -->
+<scenario name="Huge" type="Huge" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!--Motocycle -->
+<scenario name="Motocycle" type="Motocycle" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+<!--Truck_walker-->
+<scenario name="Truck_walker" type="Truck_walker" town="Town01">
+<ego_vehicle x="225" y="133.14" z="0.5" yaw="0" model="vehicle.lincoln.mkz_2017"/>
+<weather cloudiness="0" precipitation="0" precipitation_deposits="0" wind_intensity="0" sun_azimuth_angle="0" sun_altitude_angle="75"/>
+</scenario>
+</scenarios>

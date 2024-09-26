@@ -1,0 +1,35 @@
+{ "scenario":[{
+    "lane":"turn right",
+    "map":"Town02",
+    "spawn_point":"180,109.9,1.2,0,0,0",
+    "goal":"189.58, 120,1.2,0,90,0",
+    "NPC":{}
+},
+ 
+ 
+ 
+ 
+
+{
+"type": "vehicle.*",
+"id": "ego_vehicle",
+"map":"Town02",
+"spawn_point": {"x":130 , "y": 105.5, "z": 0.2, "roll": 0.0, "pitch": 0.0, "yaw": 180},
+"goal_point": {"x": 50, "y": 105.5, "z": 0.2, "roll": 0.0, "pitch": 0.0, "yaw": 180},
+}
+{
+"type": "vehicle.*",
+"map":"Town03",
+"id": "ego_vehicle",
+"spawn_point": {"x": 60, "y": -136.9, "z": 0, "roll": 0.0, "pitch": 0.0, "yaw": 180},
+"goal_point": {"x": 60, "y": -136.9, "z": 0, "roll": 0.0, "pitch": 0.0, "yaw": 180},
+}
+
+{
+"type": "vehicle.*",
+"map":"Town03",
+"id": "ego_vehicle",
+"spawn_point": {"x": 60, "y": -136.9, "z": 0, "roll": 0.0, "pitch": 0.0, "yaw": 180},
+"goal_point": {"x": 60, "y": -136.9, "z": 0, "roll": 0.0, "pitch": 0.0, "yaw": 180},
+"param_setting":{"surrounding_check":{"use_pointcloud":false}}
+}

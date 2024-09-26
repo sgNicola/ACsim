@@ -1,0 +1,15 @@
+objects_withfeature_topics:
+    # msg_type: DetectedObjectsWithFeature
+    - '/perception/object_recognition/detection/clustering/clusters'
+detected_object_topics:
+    # msg_type: DetectedObject
+    - '/perception/object_recognition/detection/centerpoint/objects'
+    - '/perception/object_recognition/detection/clustering/objects'
+    - '/perception/object_recognition/detection/objects'
+    - '/perception/object_recognition/detection/centerpoint/validation/objects'
+tracked_object_topics:
+    - '/perception/object_recognition/tracking/objects'
+idl_paths:
+    - '/home/anonymous/ACsim/autoware_auto_msgs/autoware_auto_perception_msgs/msg/'
+    - '/home/anonymous/ACsim/autoware_auto_msgs/carla_msg/msg/'
+    - '/home/anonymous/ACsim/autoware_auto_msgs/tier4_perception_msgs/msg/'

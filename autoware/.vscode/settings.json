@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "vector": "cpp",
+        "*.ipp": "cpp",
+        "array": "cpp",
+        "any": "cpp",
+        "string_view": "cpp",
+        "slist": "cpp",
+        "regex": "cpp",
+        "string": "cpp",
+        "functional": "cpp"
+    }
+}

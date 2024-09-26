@@ -1,0 +1,42 @@
+{
+    "_comment": "Prop in the drive area",
+    "map":"Town05",
+    "objects": 
+    [
+        {
+            "type": "static.prop.constructioncone",
+            "id": "Construction cone",
+            "spawn_point": {"x": 0.0, "y": 0.0, "z": 0.0, "roll": 0.0, "pitch": 0.0, "yaw": 0.0}
+        },
+        {
+            "type": "static.prop.warningconstruction",
+            "id": "Warning construction",
+            "spawn_point": {"x": -11.1, "y": 138.5, "z": 0.2, "roll": 0.0, "pitch": 0.0, "yaw": -178.7}
+        },
+        {
+            "type": "static.prop.streetbarrier",
+            "id": "Street barrier",
+            "spawn_point": {"x": -11.1, "y": 138.5, "z": 0.2, "roll": 0.0, "pitch": 0.0, "yaw": -178.7}
+        }, 
+        {
+            "type": "static.prop.trafficcone01",
+            "id": "Traffic cone 01",
+            "spawn_point": {"x": -11.1, "y": 138.5, "z": 0.2, "roll": 0.0, "pitch": 0.0, "yaw": -178.7}
+        }, 
+        {
+            "type": "static.prop.trafficcone02",
+            "id": "Traffic cone 02",
+            "spawn_point": {"x": -11.1, "y": 138.5, "z": 0.2, "roll": 0.0, "pitch": 0.0, "yaw": -178.7}
+        },
+        {
+            "type": "static.prop.warningaccident",
+            "id": "Warning accident",
+            "spawn_point": {"x": -11.1, "y": 138.5, "z": 0.2, "roll": 0.0, "pitch": 0.0, "yaw": -178.7}
+        }
+    ],
+
+    "ego_vehicle":{
+        "spawn_point":{"x": -11.1, "y": 138.5, "z": 0.2, "roll": 0.0, "pitch": 0.0, "yaw": -178.7},
+        "goal_point":{"x": -11.1, "y": 138.5, "z": 0.2, "roll": 0.0, "pitch": 0.0, "yaw": -178.7}
+    }
+}
