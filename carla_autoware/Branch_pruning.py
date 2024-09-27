@@ -3,8 +3,8 @@ from param import failure_mode, Data_dir,ObjectData_dir
 import os
 import time
 from perceptionIdentify.process_rosbag import process_rosbag_file
-# from perceptionIdentify.parse_fusion import record_failure
-from perceptionIdentify.parse_lidar import record_failure
+from perceptionIdentify.parse_fusion import record_failure
+# from perceptionIdentify.parse_lidar import record_failure
 from perceptionIdentify.extract_graph import load_graph, create_subgraph
 from perceptionIdentify.utils import *
 import shutil

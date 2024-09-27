@@ -4,6 +4,7 @@ from Chain_pruning import GIWP
 import os
 from param import Data_dir, failure_mode
 from run_lidar import run_carla_scenario_agent 
+# from run_cluster import run_carla_scenario_agent
 from perceptionIdentify.parse_lidar import record_failure
 from perceptionIdentify.process_rosbag import process_rosbag_file
 from perceptionIdentify.extract_graph import load_graph, create_subgraph

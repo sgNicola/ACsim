@@ -1,14 +1,14 @@
 import networkx as nx
 import os
-# from run_fusion import run_carla_scenario_agent 
-from run_lidar import run_carla_scenario_agent 
+from run_fusion import run_carla_scenario_agent 
+# from run_lidar import run_carla_scenario_agent 
 from perceptionIdentify.process_rosbag import process_rosbag_file
 import time
 from perceptionIdentify.utils import *
 from perceptionIdentify.extract_graph import load_graph,create_subgraph
 from Branch_pruning import get_ancestors, get_parents
-# from perceptionIdentify.parse_fusion import record_failure
-from perceptionIdentify.parse_lidar import record_failure
+from perceptionIdentify.parse_fusion import record_failure
+# from perceptionIdentify.parse_lidar import record_failure
 def GIWP(ini_P, F, experiment_id, object_id, id, scenario, params):
     C = set()
     X = set()
