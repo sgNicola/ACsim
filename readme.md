@@ -198,7 +198,7 @@ mkdir -p /home/anonymous/ssd/
 
 **[Execution]**
 
-- **Main Script:** Execute `python3 fusion_hira.py`.
+- **Main Script:** Execute `source ~/ACsim/autoware/install/setup.sh` `python3 fusion_hira.py`.
 - **Experiment Workflow:**
   - **Initialization:**
     - This framework will start the Carla server to simulate driving scenarios based on the configured scenario parameters.
