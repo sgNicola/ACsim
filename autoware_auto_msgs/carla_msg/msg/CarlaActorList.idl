@@ -1,1 +1,16 @@
-/home/wsg/autoware/build/carla_msg/rosidl_adapter/carla_msg/msg/CarlaActorList.idl
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from carla_msg/msg/CarlaActorList.msg
+// generated code does not contain a copyright notice
+
+#include "carla_msg/msg/CarlaActor.idl"
+#include "std_msgs/msg/Header.idl"
+
+module carla_msg {
+  module msg {
+    struct CarlaActorList {
+      std_msgs::msg::Header header;
+
+      sequence<carla_msg::msg::CarlaActor> actors;
+    };
+  };
+};

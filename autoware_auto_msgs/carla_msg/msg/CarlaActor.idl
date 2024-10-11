@@ -1,1 +1,31 @@
-/home/wsg/autoware/build/carla_msg/rosidl_adapter/carla_msg/msg/CarlaActor.idl
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from carla_msg/msg/CarlaActor.msg
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Accel.idl"
+#include "geometry_msgs/msg/Pose.idl"
+#include "geometry_msgs/msg/Twist.idl"
+#include "geometry_msgs/msg/Vector3.idl"
+
+module carla_msg {
+  module msg {
+    @verbatim (language="comment", text=
+      " geometry_msgs/msg/Pose.msg" "\n"
+      " Represents the pose (position and orientation) of an object in free space")
+    struct CarlaActor {
+      uint32 id;
+
+      string type;
+
+      geometry_msgs::msg::Pose pose;
+
+      geometry_msgs::msg::Twist twist;
+
+      geometry_msgs::msg::Accel accel;
+
+      uint32 distance;
+
+      geometry_msgs::msg::Vector3 boundingbox;
+    };
+  };
+};
