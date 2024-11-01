@@ -359,13 +359,13 @@ mkdir -p /home/anonymous/ssd/
    - Change line 45 in `ACsim/carla_autoware/perceptionIdentify/process_rosbag.py` 
 
      ```
-     config = load_config('/home/wsg/ACsim/carla_autoware/perceptionIdentify/fusion_config.yaml')
+     config = load_config('/home/anonymous/ACsim/carla_autoware/perceptionIdentify/fusion_config.yaml')
      ```
 
      to
 
      ```
-     config = load_config('/home/wsg/ACsim/carla_autoware/perceptionIdentify/lidar_config.yaml')
+     config = load_config('/home/anonymous/ACsim/carla_autoware/perceptionIdentify/lidar_config.yaml')
      ```
 
      
@@ -495,7 +495,7 @@ To assign an MO fault to the Tracker Module, update the argument to: `tracker_fa
 **For example in Experiment ID 10**, Module with fault  {10: MO} , it means that we injected an MO fault in  module  `10`: `tracker_faulty_mode`, therefore, we should update the argument from `tracker_faulty_mode:=0`  to: `tracker_faulty_mode:=1`. Then source command in the start_ros2.sh is like this.
 
 ```
-ros2 launch /home/wsg/ACsim/autoware/src/launcher/autoware_launch/autoware_launch/launch/autoware.launch.xml map_path:=/home/anonymous/ACsim/map_data/${map_name} vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit yolo_faulty_mode:=0 lidar_faulty_mode:=0 validation_faulty_mode:=0 shape_faulty_mode:=0 fusion_faulty_mode:=0 merger_faulty_mode:=0 dbt_faulty_mode:=0 tracker_faulty_mode:=1 yolo_timeLatencyDuration:=0 lidar_timeLatencyDuration:=0 shape_timeLatencyDuration:=0 fusion_timeLatencyDuration:=0 merger_timeLatencyDuration:=0 dbt_timeLatencyDuration:=0 tracker_timeLatencyDuration:=0
+ros2 launch /home/anonymous/ACsim/autoware/src/launcher/autoware_launch/autoware_launch/launch/autoware.launch.xml map_path:=/home/anonymous/ACsim/map_data/${map_name} vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit yolo_faulty_mode:=0 lidar_faulty_mode:=0 validation_faulty_mode:=0 shape_faulty_mode:=0 fusion_faulty_mode:=0 merger_faulty_mode:=0 dbt_faulty_mode:=0 tracker_faulty_mode:=1 yolo_timeLatencyDuration:=0 lidar_timeLatencyDuration:=0 shape_timeLatencyDuration:=0 fusion_timeLatencyDuration:=0 merger_timeLatencyDuration:=0 dbt_timeLatencyDuration:=0 tracker_timeLatencyDuration:=0
 ```
 
 #### Execution
@@ -516,6 +516,9 @@ Follow the same steps as described in Experiments E2. If you want to repeat grou
 
 The display of rviz2 may occasionally be black due to tight display resources. It does not affect the experiment, it will automatically recover after running for a while.
 
+## Data link of raw data for recorded issues.
+1. https://drive.google.com/drive/folders/1aSsugDhv0ZhcLZzni5KLBpAu3Vr6lJqX?usp=share_link
+2. https://drive.google.com/drive/folders/1CtjPF1jNsm2bRsyisEOX7EJDEtoroJnX?usp=share_link
 
 
 
