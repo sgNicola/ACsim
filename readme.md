@@ -516,7 +516,7 @@ Follow the same steps as described in Experiments E2. If you want to repeat grou
 
 The display of rviz2 may occasionally be black due to tight display resources. It does not affect the experiment, it will automatically recover after running for a while.
 
-## Data link of raw data for recorded issues.
+## Data link of raw data for recorded faults.
 1. https://drive.google.com/drive/folders/1aSsugDhv0ZhcLZzni5KLBpAu3Vr6lJqX?usp=share_link
 2. https://drive.google.com/drive/folders/1CtjPF1jNsm2bRsyisEOX7EJDEtoroJnX?usp=share_link
 
