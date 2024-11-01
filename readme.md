@@ -516,9 +516,6 @@ Follow the same steps as described in Experiments E2. If you want to repeat grou
 
 The display of rviz2 may occasionally be black due to tight display resources. It does not affect the experiment, it will automatically recover after running for a while.
 
-### 2. Crash of Carla server
-
-This is also due to the tight of resources, please stop the experiments and  wait for around 5 minutes, then you can restart the experiments.
 
 
 
