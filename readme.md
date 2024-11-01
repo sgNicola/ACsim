@@ -40,6 +40,8 @@ First, clone this repository into the `~/ACsim` workspace.
 
 We are integrating Autoware.Universe Galactic version tailored for ADS development, enriched with fault injection capabilities and enhanced packages for simulation synchronization with CARLA.
 
+For the convenience of experiment, we recommend installing Autoware in a separate workspace.
+
 ##### Installing Dependencies Using Ansible
 
 Navigate to the autoware directory and set up the development environment:
@@ -191,14 +193,38 @@ mkdir -p /home/anonymous/ssd/
 
 1. **Multi-Sensor Fusion Configurations (MSF) in Autoware**: 
    - Use the default configuration: Camera-Lidar-Fusion Configuration.
+   
 2. **Scenario Parameters Configuration**:
-   - Configure each group with a specific scenario configuration. Below is the list of group ids in TABLE III and their corresponding scenario configurations: `group scenarios ={1:Huge_truck, 2: Truck_walker, 3-4:Cone (with different object types), 5:Sparse, 6:Truck, 7:Vans}`.
+   
+   - Configure each group with a specific scenario configuration. In this experiment, it should be like this in fusion_hira.py
+   
+     ```
+     scenario="Cone"
+         X1 = [8,10,-2,6,-1,0,1,3,5,7,9,-3,2,4]
+         Y1 = [-1,-0,1,-0.5]
+         object_types=['static.prop.streetbarrier',
+             'static.prop.constructioncone',
+             'static.prop.trafficcone01',
+             'static.prop.trafficcone02',
+             'static.prop.warningconstruction',
+             'static.prop.warningaccident',
+             ]
+         params = {
+             "X1": 0,
+             "Y1": 0,
+             "object_type": None
+         }
+     ```
+   
+     
+   
 3. **Failure Modes Configuration**:
+   
    - Configure failure mode arguments in `param.py` based on the definitions provided in TABLE I. Mappings include: `{false_negative: Missing Obstacle, false_positive: Ghost Obstacle, wrong_localization: Mislocalization, wrong_classification: Misclassification}`.
 
 **[Execution]**
 
-- **Main Script:** Execute `source ~/ACsim/autoware/install/setup.sh` `python3 fusion_hira.py`.
+- **Main Script:** Execute `source ~/ACsim/autoware/install/setup.sh && python3 fusion_hira.py`.
 - **Experiment Workflow:**
   - **Initialization:**
     - This framework will start the Carla server to simulate driving scenarios based on the configured scenario parameters.
@@ -222,11 +248,8 @@ mkdir -p /home/anonymous/ssd/
 
 **[Results]**
 
-- Results data: results of a group saved in 
-- Result process
-- Result analysis:
-  - **Effectiveness:** 
-  - **Efficiency:** Count the intervention numbers in one experiment, which is the file number minus one in the `/ACsim/CausalAnalysis/data/(Experiment_id)/`.
+- This experiment is just for demonstrating functionality, it is not enough for calculate the final results which require at least 100 experiments.
+- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `(Execution_id)_object_(id)/_(failure_mode).csv` and ` ~/ACsim/CausalAnalysis`. Then clean these data folders for next experiments.
 
 #### Experiment (E2)
 **[Real fault scenarios] [20 human-minutes + 200 compute-hours]:** This experiment aims to evaluate its effectiveness in real-world fault scenarios of groups 1-2, as detailed in [Table III].
@@ -234,98 +257,161 @@ mkdir -p /home/anonymous/ssd/
 **[Preparation]**
 
 1. **Multi-Sensor Fusion Configurations (MSF) in Autoware**:  
+
    - **Lidar-Fusion Configuration:** For the Lidar-Fusion setup, update the launch arguments in `autoware.launch.xml` and `detection.launch.xml`.
-   
+
+   - please check the file path in `/ACsim/carla_autoware/op_agent/start_ros2.sh` , and change the launch file under the autoware workspace with `source /home/wsg/XX/autoware/XX`
+
      1. 1. **Autoware Launch File**
            Path: `autoware/src/launcher/autoware_launch/autoware_launch/launch/autoware.launch.xml`
            Change the line 129 from:
-   
+
            ```xml
            <arg name="mode" value="camera_lidar_fusion"/>
            ```
-   
+
            To:
-   
+
            ```xml
            <arg name="mode" value="lidar"/>
            ```
-   
+
         2. **Object Recognition Launch File**
            Path: `autoware/src/universe/autoware.universe/launch/tier4_perception_launch/launch/object_recognition/detection/detection.launch.xml`
            Modify line 4 from:
-   
+
            ```xml
            <arg name="mode" default="camera_lidar_fusion" description="options: `camera_lidar_radar_fusion`, `camera_lidar_fusion`, `lidar_radar_fusion`, `lidar` or `radar`"/>
            ```
-   
+
            To:
-   
+
            ```xml
            <arg name="mode" default="lidar" description="options: `camera_lidar_radar_fusion`, `camera_lidar_fusion`, `lidar_radar_fusion`, `lidar` or `radar`"/>
            ```
-   
-2. **Scenario Parameters Configuration**: Configure scenarios for group ids `{1:Huge_truck, 2: Truck_walker}` as listed in TABLE III.
 
-3. **Failure Modes Configuration**: Configure failure mode arguments as `false_negative` in `param.py` based on definitions in TABLE I.
+2. **Scenario Parameters Configuration**: Configure scenarios for group ids `{1:truck}` as listed in TABLE III.
+
+   **Please note that we can only configure one type of scenarios at once **
+
+   1: Truck, please keep the configuration in `lidar_hira.py`. from 148- 157 lines
+
+   ```
+       scenario='Truck'
+       params = {
+       "X1": 0,
+       "Y1": 0,
+       "object_type": None
+       }
+       X1 =[5,6,6.5,7,7.5,8,8.5,9,9.5,10]
+       Y1 =[0,-1,-0.5]
+       object_types =['vehicle.mitsubishi.fusorosa','vehicle.mitsubishi.fusorosa','vehicle.mitsubishi.fusorosa','vehicle.mitsubishi.fusorosa']
+       run_experiments(X1, Y1, object_types)
+   ```
+
+   2: Truck_walker, please keep the configuration in `lidar_hira.py`. from 159- 170 lines
+
+   ```
+        scenario="Truck_walker"
+       X1 =[5,6,6.5,7,7.5,8,8.5,9,9.5,10]
+       Y1 =[0,-1,-0.5]
+       object_types =['vehicle.bh.crossbike','vehicle.gazelle.omafiets',
+                      'vehicle.diamondback.century']
+       object_types =['vehicle.mitsubishi.fusorosa','vehicle.tesla.cybertruck']
+       params = {
+           "X1": 0,
+           "Y1": 0,
+           "object_type": None
+       }
+       run_experiments(X1, Y1, object_types)
+   ```
+
+   For example, we can keep the configuration of scenario 'Truck' , and comment out other configurations.
+
+3. **Failure Modes Configuration**: Configure failure mode arguments as `false_negative` in `ACsim/carla_autoware/param.py` based on definitions in TABLE I.
 
 4. **Lidar-Fusion Configuration**:
-   - Change line 6, 10 in `utils.py` to import specific modules for Lidar processing: from
-   
+
+   - Change line 6, 10 in `ACsim/carla_autoware/perceptionIdentify/utils.py` to import specific modules for Lidar processing: from
+
      ```python
      from run_fusion import run_carla_scenario_agent
      ```
-   
+
      to:
-   
+
      ```python
      from run_lidar import run_carla_scenario_agent
      ```
-   
+
      change:
-   
+
      ```python
      from perceptionIdentify.parse_fusion import record_intervene
      ```
-   
+
      to:
-   
+
      ```python
      from perceptionIdentify.parse_lidar import record_intervene
      ```
-   
+
+   - Change line 45 in `ACsim/carla_autoware/perceptionIdentify/process_rosbag.py` 
+
+     ```
+     config = load_config('/home/wsg/ACsim/carla_autoware/perceptionIdentify/fusion_config.yaml')
+     ```
+
+     to
+
+     ```
+     config = load_config('/home/wsg/ACsim/carla_autoware/perceptionIdentify/lidar_config.yaml')
+     ```
+
      
-   
-   - Execute `python3 lidar_hira.py`.
+
+     Ensure the launch files are the same as you have configured.
 
 **[Execution]**
 
-- Execute `python3 lidar_hira.py`, with other steps the are same as E1.
+- Please enter into carla_autoware in terminal.
 
-#### Experiment (E3)
+  ```
+  cd ~/ACsim/carla_autoware
+  ```
+
+- Execute  `source ~/ACsim/autoware/install/setup.sh && python3 lidar_hira.py`, with other steps the are same as E1.
+
+#### Experiment (E3) 
 **[Real fault scenarios] [20 human-minutes + 200 compute-hours]:** This experiment aims to evaluate its effectiveness in real-world fault scenarios of groups 6-7, as detailed in [Table III].
 
 **[Preparation]**
 
-1. **Scenario Parameters Configuration**: Configure scenarios for group ids `{6, 7}` as listed in TABLE III.
+1. **Cluster configuration**:
 
-2. **Cluster configuration**:
    - [ ] Modify  `lidar_hira.py` to use the appropriate modules for cluster-based processing.
-   
+
      change
-   
+
      ```python
      from run_lidar import run_carla_scenario_agent 
      ```
-   
+
      to
-   
+
      ```python
      from run_cluster import run_carla_scenario_agent
      ```
 
 **[Execution]**
 
-Execute `python3 lidar_hira.py`.
+- Please enter into carla_autoware in terminal.
+
+  ```
+  cd ~/ACsim/carla_autoware
+  ```
+
+-  Execute `source ~/ACsim/autoware/install/setup.sh && python3 lidar_hira.py`.
 
 The execution steps are the same as in E2, maintaining consistency across experiments for comparability and analysis.
 
@@ -333,34 +419,110 @@ The execution steps are the same as in E2, maintaining consistency across experi
 
 **Duration:** 10 human-minutes + 200 compute-hours
 
-**Objective:** This experiment aims to evaluate the effectiveness and efficiency in synthetic fault scenarios for groups 8-19, as detailed in Table IV and Table V.
+**Objective:** This experiment aims to evaluate the effectiveness and efficiency in synthetic fault scenarios for groups 8-17, as detailed in Table IV and Table V.
+
+**Scenario Parameters Configuration **: Configure scenarios in ACsim/carla_autoware/lidar_hira.py in lines 133-146
+
+```
+    scenario="Car"
+    X1=[-10,0,-5,-7,-9,-3,-2,-4,-8,-6]
+    Y1 = [-1,0,0.6]
+    object_types=['vehicle.tesla.model3',
+        'vehicle.toyota.prius',
+        'vehicle.audi.tt',
+        'vehicle.jeep.wrangler_rubicon'
+        ]
+    params = {
+        "X1": 0,
+        "Y1": 0,
+        "object_type": None
+    }
+    run_experiments(X1, Y1, object_types)
+```
+
+and comment out other scenario configuration in lines 148-157, 159-170
 
 #### Fault Injection
 
 To inject faults as listed in Table II ("Module with Fault"), please update the arguments for each module in the script `ACsim/carla_autoware/op_agent/start_ros2.sh`.
 
 ```shell
-ros2 launch /home/anonymous/ACsim/autoware/src/launcher/autoware_launch/autoware_launch/launch/autoware.launch.xml map_path:=/home/anonymous/ACsim/map_data/${map_name} vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit yolo_faulty_mode:=0 lidar_faulty_mode:=0 validation_faulty_mode:=0 shape_faulty_mode:=0 fusion_faulty_mode:=0 merger_faulty_mode:=0 dbt_faulty_mode:=0 tracker_faulty_mode:=1 yolo_timeLatencyDuration:=0 lidar_timeLatencyDuration:=0 shape_timeLatencyDuration:=0 fusion_timeLatencyDuration:=0 merger_timeLatencyDuration:=0 dbt_timeLatencyDuration:=0 tracker_timeLatencyDuration:=0
+ros2 launch /home/wsg/ACsim/autoware/src/launcher/autoware_launch/autoware_launch/launch/autoware.launch.xml map_path:=/home/anonymous/ACsim/map_data/${map_name} vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit yolo_faulty_mode:=0 lidar_faulty_mode:=0 validation_faulty_mode:=0 shape_faulty_mode:=0 fusion_faulty_mode:=0 merger_faulty_mode:=0 dbt_faulty_mode:=0 tracker_faulty_mode:=0 yolo_timeLatencyDuration:=0 lidar_timeLatencyDuration:=0 shape_timeLatencyDuration:=0 fusion_timeLatencyDuration:=0 merger_timeLatencyDuration:=0 dbt_timeLatencyDuration:=0 tracker_timeLatencyDuration:=0
 ```
 
-- **Fault Modes Definition:**
-  - `0`: Normal
-  - `1`: MO
-  - `2`: GO
-  - `3`: ML
-  - `4`: MC
-- **Module IDs and Corresponding Arguments:**
-  - `1`: `lidar_faulty_mode`
-  - `3`: `yolo_faulty_mode`
-  - `4`: `validation_faulty_mode`
-  - `5`: `fusion_faulty_mode`
-  - `8`: `shape_faulty_mode`
-  - `9`: `merger_faulty_mode`
-  - `10`: `tracker_faulty_mode`
+**Fault Modes Definition:**
 
-To assign an MO fault to the Merger Module, update the argument to: `merger_faulty_mode:=1`.
+- `0`: Normal
+- `1`: MO
+- `2`: GO
+- `3`: ML
+- `4`: MC
 
-#### Execution & Results
+**Module IDs and Corresponding Arguments for Lidar-fusion configuration:**
 
-Follow the same steps as described for Experiments E1-E3.
+`1`: `lidar_faulty_mode`
+
+`4`: `validation_faulty_mode`
+
+`5`: `fusion_faulty_mode`
+
+`8`: `shape_faulty_mode`
+
+`9`: `merger_faulty_mode`
+
+`10`: `tracker_faulty_mode`
+
+**Module IDs and Corresponding Arguments for Camera-Lidar-fusion configuration:**
+
+- `1`: `lidar_faulty_mode`
+
+- `3`: `yolo_faulty_mode`
+
+- `4`: `validation_faulty_mode`
+
+- `5`: `fusion_faulty_mode`
+
+- `6`: `shape_faulty_mode`
+
+- `7`: `merger_faulty_mode`
+
+- `10`: `tracker_faulty_mode`
+
+  **Note that although the arguments 6 and 7 are the same in the Lidar-fusion configuration, they correspond to different nodes in separate launch files  **
+
+To assign an MO fault to the Tracker Module, update the argument to: `tracker_faulty_mode:=1`.
+
+**For example in Experiment ID 10**, Module with fault  {10: MO} , it means that we injected an MO fault in  module  `10`: `tracker_faulty_mode`, therefore, we should update the argument from `tracker_faulty_mode:=0`  to: `tracker_faulty_mode:=1`. Then source command in the start_ros2.sh is like this.
+
+```
+ros2 launch /home/wsg/ACsim/autoware/src/launcher/autoware_launch/autoware_launch/launch/autoware.launch.xml map_path:=/home/anonymous/ACsim/map_data/${map_name} vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit yolo_faulty_mode:=0 lidar_faulty_mode:=0 validation_faulty_mode:=0 shape_faulty_mode:=0 fusion_faulty_mode:=0 merger_faulty_mode:=0 dbt_faulty_mode:=0 tracker_faulty_mode:=1 yolo_timeLatencyDuration:=0 lidar_timeLatencyDuration:=0 shape_timeLatencyDuration:=0 fusion_timeLatencyDuration:=0 merger_timeLatencyDuration:=0 dbt_timeLatencyDuration:=0 tracker_timeLatencyDuration:=0
+```
+
+#### Execution
+
+- Please enter into carla_autoware in terminal.
+
+  ```
+  cd ~/ACsim/carla_autoware
+  ```
+
+- Execute `source ~/ACsim/autoware/install/setup.sh && python3 lidar_hira.py`.
+
+Follow the same steps as described in Experiments E2. If you want to repeat group 18-19, please follow the same steps as described in E1.
+
+## Common issues and solutions
+
+### 1. Black screen of Rviz2
+
+The display of rviz2 may occasionally be black due to tight display resources. It does not affect the experiment, it will automatically recover after running for a while.
+
+### 2. Crash of Carla server
+
+This is also due to the tight of resources, please stop the experiments and  wait for around 5 minutes, then you can restart the experiments.
+
+
+
+
+
+
 
