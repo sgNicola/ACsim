@@ -192,22 +192,20 @@ mkdir -p /home/anonymous/ssd/
 **[Preparation]**
 
 1. **Multi-Sensor Fusion Configurations (MSF) in Autoware**: 
+
    - Use the default configuration: Camera-Lidar-Fusion Configuration.
-   
+
 2. **Scenario Parameters Configuration**:
-   
-   - Configure each group with a specific scenario configuration. In this experiment, it should be like this in fusion_hira.py
-   
-     ```
+
+   - Configure group 3 with the following specific scenario configuration. In this experiment, it should be like this in fusion_hira.py
+
+     ```python
      scenario="Cone"
          X1 = [8,10,-2,6,-1,0,1,3,5,7,9,-3,2,4]
          Y1 = [-1,-0,1,-0.5]
-         object_types=['static.prop.streetbarrier',
-             'static.prop.constructioncone',
+         object_types=[
              'static.prop.trafficcone01',
              'static.prop.trafficcone02',
-             'static.prop.warningconstruction',
-             'static.prop.warningaccident',
              ]
          params = {
              "X1": 0,
@@ -215,11 +213,42 @@ mkdir -p /home/anonymous/ssd/
              "object_type": None
          }
      ```
-   
      
-   
+   - **(Optional)**  If you want to configure group 4 with the following specific scenario configuration. In this experiment, it should be like this in fusion_hira.py
+
+     ```python
+     scenario="Cone"
+         X1 = [8,10,-2,6,-1,0,1,3,5,7,9,-3,2,4]
+         Y1 = [-1,-0,1,-0.5]
+         object_types=['static.prop.streetbarrier',
+             'static.prop.constructioncone',
+             ]
+         params = {
+             "X1": 0,
+             "Y1": 0,
+             "object_type": None
+         }
+     ```
+
+     **(Optional)**  If you want to configure group 5 with the following specific scenario configuration. In this experiment, it should be like this in fusion_hira.py
+
+   ```python
+   scenario="Cone"
+       X1 = [8,10,-2,6,-1,0,1,3,5,7,9,-3,2,4]
+       Y1 = [-1,-0,1,-0.5]
+       object_types=[
+           'static.prop.warningconstruction',
+           'static.prop.warningaccident',
+           ]
+       params = {
+           "X1": 0,
+           "Y1": 0,
+           "object_type": None
+       }
+   ```
+
 3. **Failure Modes Configuration**:
-   
+
    - Configure failure mode arguments in `param.py` based on the definitions provided in TABLE I. Mappings include: `{false_negative: Missing Obstacle, false_positive: Ghost Obstacle, wrong_localization: Mislocalization, wrong_classification: Misclassification}`.
 
 **[Execution]**
@@ -296,7 +325,7 @@ mkdir -p /home/anonymous/ssd/
 
    1: Truck, please keep the configuration in `lidar_hira.py`. from 148- 157 lines
 
-   ```
+   ```python
        scenario='Truck'
        params = {
        "X1": 0,
@@ -311,7 +340,7 @@ mkdir -p /home/anonymous/ssd/
 
    2: Truck_walker, please keep the configuration in `lidar_hira.py`. from 159- 170 lines
 
-   ```
+   ```python
         scenario="Truck_walker"
        X1 =[5,6,6.5,7,7.5,8,8.5,9,9.5,10]
        Y1 =[0,-1,-0.5]
@@ -510,13 +539,10 @@ ros2 launch /home/anonymous/ACsim/autoware/src/launcher/autoware_launch/autoware
 
 Follow the same steps as described in Experiments E2. If you want to repeat group 18-19, please follow the same steps as described in E1.
 
-## Common issues and solutions
+## Data link 
 
-### 1. Black screen of Rviz2
+You can download the raw data for recorded faults verified by Autoware developers through the following link.
 
-The display of rviz2 may occasionally be black due to tight display resources. It does not affect the experiment, it will automatically recover after running for a while.
-
-## Data link of raw data for recorded faults verified by Autoware developers.
 1. https://drive.google.com/drive/folders/1aSsugDhv0ZhcLZzni5KLBpAu3Vr6lJqX?usp=share_link
 2. https://drive.google.com/drive/folders/1CtjPF1jNsm2bRsyisEOX7EJDEtoroJnX?usp=share_link
 
