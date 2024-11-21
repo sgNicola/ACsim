@@ -183,8 +183,45 @@ mkdir -p /home/anonymous/ssd/
 
 ## Evaluation
 
+#### **File structure**
+
+The following is the file structure of this project, which shows the main scripts used in the experiments.
+
+~~~~
+carla_autoware
+├── camera_lidar_fusion_based_detection.launch.xml
+├── param.py
+├── config.yaml
+├── evaluation.ipynb
+├── fusion_aid.py
+├── fusion_dvca.py
+├── fusion_hira.py
+├── fusion_rcd.py
+├── lidar_aid.py
+├── lidar_dvca.py
+├── lidar_hira.py
+├── lidar_rcd.py
+├── op_agent
+│   └── start_ros2.sh
+├── op_bridge
+├── perceptionIdentify
+│   ├── cluster_intervene.py
+│   ├── cluster_launch.py
+│   ├── fusion_config.yaml
+│   ├── fusion_intervene.py
+│   ├── fusion_launch.py
+│   ├── lidar_config.yaml
+│   ├── lidar_intervene.py
+│   ├── lidar_launch.py
+│   ├── parse_fusion.py
+│   ├── parse_lidar.py
+│   ├── process_rosbag.py
+│   ├── ...
+~~~~
+
 #### Experiment (E1)
 **[Real fault scenarios] [20 human-minutes + 200 compute-hours]:** This experiment aims to:
+
 - Assess the functionality of the automated IRCA framework.
 - Evaluate its effectiveness in real-world fault scenarios, as detailed in [Table III].
 - Evaluate its efficiency as detailed in [Table VI].
@@ -249,7 +286,7 @@ mkdir -p /home/anonymous/ssd/
 
 3. **Failure Modes Configuration**:
 
-   - Configure failure mode arguments in `param.py` based on the definitions provided in TABLE I. Mappings include: `{false_negative: Missing Obstacle, false_positive: Ghost Obstacle, wrong_localization: Mislocalization, wrong_classification: Misclassification}`.
+   - Configure failure mode arguments in `~/ACsim/carla_autoware/param.py` based on the definitions provided in TABLE I. Mappings include: `{false_negative: Missing Obstacle, false_positive: Ghost Obstacle, wrong_localization: Mislocalization, wrong_classification: Misclassification}`.
 
 **[Execution]**
 
@@ -277,7 +314,10 @@ mkdir -p /home/anonymous/ssd/
 
 **[Results]**
 
-- This experiment is just for demonstrating functionality, it is not enough for calculate the final results which require at least 100 experiments.
+This experiment is just for demonstrating functionality, it is not enough for calculate the final results which require at least 100 experiments.
+
+**[Data collection]**
+
 - Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `(Execution_id)_object_(id)/_(failure_mode).csv` and ` ~/ACsim/CausalAnalysis`. Then clean these data folders for next experiments.
 
 #### Experiment (E2)
@@ -338,7 +378,7 @@ mkdir -p /home/anonymous/ssd/
        run_experiments(X1, Y1, object_types)
    ```
 
-   2: Truck_walker, please keep the configuration in `lidar_hira.py`. from 159- 170 lines
+   **(Optional) **For group 2: Truck_walker, please keep the configuration in `lidar_hira.py`. from 159- 170 lines
 
    ```python
         scenario="Truck_walker"
@@ -387,7 +427,7 @@ mkdir -p /home/anonymous/ssd/
 
    - Change line 45 in `ACsim/carla_autoware/perceptionIdentify/process_rosbag.py` 
 
-     ```
+     ```python
      config = load_config('/home/anonymous/ACsim/carla_autoware/perceptionIdentify/fusion_config.yaml')
      ```
 
@@ -411,7 +451,12 @@ mkdir -p /home/anonymous/ssd/
 
 - Execute  `source ~/ACsim/autoware/install/setup.sh && python3 lidar_hira.py`, with other steps the are same as E1.
 
+**[Data collection]**
+
+- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `(Execution_id)_object_(id)/_(failure_mode).csv` and ` ~/ACsim/CausalAnalysis`. Then clean these data folders for next experiments.
+
 #### Experiment (E3) 
+
 **[Real fault scenarios] [20 human-minutes + 200 compute-hours]:** This experiment aims to evaluate its effectiveness in real-world fault scenarios of groups 6-7, as detailed in [Table III].
 
 **[Preparation]**
@@ -432,11 +477,43 @@ mkdir -p /home/anonymous/ssd/
      from run_cluster import run_carla_scenario_agent
      ```
 
+**Scenario Parameters Configuration**: 
+
+1. For group 6: configure scenarios  in `lidar_hira.py`. from 148- 157 lines for group 7 as listed in TABLE III.
+
+   ```python
+   scenario='Truck'
+   params = {
+   "X1": 0,
+   "Y1": 0,
+   "object_type": None
+   }
+   X1 =[5,6,6.5,7,7.5,8,8.5,9,9.5,10]
+   Y1 =[0,-1,-0.5]
+   object_types =['vehicle.tesla.cybertruck','vehicle.tesla.cybertruck','vehicle.tesla.cybertruck']
+   run_experiments(X1, Y1, object_types)
+   ```
+
+2. **(Optional)** For group 7:configure scenarios  in `lidar_hira.py`. from 148- 157 lines for group 7 as listed in TABLE III. **Note that we can only configure one type of scenarios at once **
+
+```python 
+scenario='Truck'
+params = {
+"X1": 0,
+"Y1": 0,
+"object_type": None
+}
+X1 =[5,6,6.5,7,7.5,8,8.5,9,9.5,10]
+Y1 =[0,-1,-0.5]
+object_types =['vehicle.mitsubishi.fusorosa','vehicle.mitsubishi.fusorosa','vehicle.mitsubishi.fusorosa','vehicle.mitsubishi.fusorosa']
+run_experiments(X1, Y1, object_types)
+```
+
 **[Execution]**
 
 - Please enter into carla_autoware in terminal.
 
-  ```
+  ```shell
   cd ~/ACsim/carla_autoware
   ```
 
@@ -444,15 +521,19 @@ mkdir -p /home/anonymous/ssd/
 
 The execution steps are the same as in E2, maintaining consistency across experiments for comparability and analysis.
 
+**[Data collection]**
+
+- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `(Execution_id)_object_(id)/_(failure_mode).csv` and ` ~/ACsim/CausalAnalysis`. Then clean these data folders for next experiments.
+
 #### Experiment (E4)
 
 **Duration:** 10 human-minutes + 200 compute-hours
 
 **Objective:** This experiment aims to evaluate the effectiveness and efficiency in synthetic fault scenarios for groups 8-17, as detailed in Table IV and Table V.
 
-**Scenario Parameters Configuration **: Configure scenarios in ACsim/carla_autoware/lidar_hira.py in lines 133-146
+**Scenario Parameters Configuration **: Configure scenarios in `ACsim/carla_autoware/lidar_hira.py` in lines 133-146
 
-```
+```python
     scenario="Car"
     X1=[-10,0,-5,-7,-9,-3,-2,-4,-8,-6]
     Y1 = [-1,0,0.6]
@@ -517,13 +598,13 @@ ros2 launch /home/wsg/ACsim/autoware/src/launcher/autoware_launch/autoware_launc
 
 - `10`: `tracker_faulty_mode`
 
-  **Note that although the arguments 6 and 7 are the same in the Lidar-fusion configuration, they correspond to different nodes in separate launch files  **
+  **Note that although the arguments 6 and 7 are the same in the Lidar-fusion configuration, they correspond to different nodes in separate launch files when in Camera-Lidar-fusion configuration**
 
 To assign an MO fault to the Tracker Module, update the argument to: `tracker_faulty_mode:=1`.
 
 **For example in Experiment ID 10**, Module with fault  {10: MO} , it means that we injected an MO fault in  module  `10`: `tracker_faulty_mode`, therefore, we should update the argument from `tracker_faulty_mode:=0`  to: `tracker_faulty_mode:=1`. Then source command in the start_ros2.sh is like this.
 
-```
+```shell
 ros2 launch /home/anonymous/ACsim/autoware/src/launcher/autoware_launch/autoware_launch/launch/autoware.launch.xml map_path:=/home/anonymous/ACsim/map_data/${map_name} vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit yolo_faulty_mode:=0 lidar_faulty_mode:=0 validation_faulty_mode:=0 shape_faulty_mode:=0 fusion_faulty_mode:=0 merger_faulty_mode:=0 dbt_faulty_mode:=0 tracker_faulty_mode:=1 yolo_timeLatencyDuration:=0 lidar_timeLatencyDuration:=0 shape_timeLatencyDuration:=0 fusion_timeLatencyDuration:=0 merger_timeLatencyDuration:=0 dbt_timeLatencyDuration:=0 tracker_timeLatencyDuration:=0
 ```
 
@@ -531,7 +612,7 @@ ros2 launch /home/anonymous/ACsim/autoware/src/launcher/autoware_launch/autoware
 
 - Please enter into carla_autoware in terminal.
 
-  ```
+  ```shell
   cd ~/ACsim/carla_autoware
   ```
 
@@ -539,16 +620,14 @@ ros2 launch /home/anonymous/ACsim/autoware/src/launcher/autoware_launch/autoware
 
 Follow the same steps as described in Experiments E2. If you want to repeat group 18-19, please follow the same steps as described in E1.
 
+**[Data collection]**
+
+- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `(Execution_id)_object_(id)/_(failure_mode).csv` and ` ~/ACsim/CausalAnalysis`. Then clean these data folders for next experiments.
+
 ## Data link 
 
-You can download the raw data for recorded faults verified by Autoware developers through the following link.
+You can download the raw data for the recorded fault scenarios that we submitted to the Autoware project and were verified by Autoware developers using the following link.
 
 1. https://drive.google.com/drive/folders/1aSsugDhv0ZhcLZzni5KLBpAu3Vr6lJqX?usp=share_link
 2. https://drive.google.com/drive/folders/1CtjPF1jNsm2bRsyisEOX7EJDEtoroJnX?usp=share_link
-
-
-
-
-
-
 
