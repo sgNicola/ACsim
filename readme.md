@@ -378,7 +378,7 @@ This experiment is just for demonstrating functionality, it is not enough for ca
        run_experiments(X1, Y1, object_types)
    ```
 
-   **(Optional) **For group 2: Truck_walker, please keep the configuration in `lidar_hira.py`. from 159- 170 lines
+   **(Optional) ** For group 2: Truck_walker, please keep the configuration in `lidar_hira.py`. from 159- 170 lines
 
    ```python
         scenario="Truck_walker"
@@ -494,7 +494,7 @@ This experiment is just for demonstrating functionality, it is not enough for ca
    run_experiments(X1, Y1, object_types)
    ```
 
-2. **(Optional)** For group 7:configure scenarios  in `lidar_hira.py`. from 148- 157 lines for group 7 as listed in TABLE III. **Note that we can only configure one type of scenarios at once **
+2. **(Optional)** For group 7:configure scenarios  in `lidar_hira.py`. from 148- 157 lines for group 7 as listed in TABLE III.  **Note that we can only configure one type of scenarios at once **
 
 ```python 
 scenario='Truck'
@@ -598,7 +598,7 @@ ros2 launch /home/wsg/ACsim/autoware/src/launcher/autoware_launch/autoware_launc
 
 - `10`: `tracker_faulty_mode`
 
-  **Note that although the arguments 6 and 7 are the same in the Lidar-fusion configuration, they correspond to different nodes in separate launch files when in Camera-Lidar-fusion configuration**
+  Note that although the arguments 6 and 7 are the same in the Lidar-fusion configuration, they correspond to different nodes in separate launch files when in Camera-Lidar-fusion configuration
 
 To assign an MO fault to the Tracker Module, update the argument to: `tracker_faulty_mode:=1`.
 
@@ -626,7 +626,16 @@ Follow the same steps as described in Experiments E2. If you want to repeat grou
 
 ## Data link 
 
-You can download the raw data for the recorded fault scenarios that we submitted to the Autoware project and were verified by Autoware developers using the following link.
+We have submitted two ROS2 bag files that capture recorded fault scenarios, which have been verified by developers from the Autoware project:
+
+1. **File:** `rosbag2_2024_05_07-22_10_34_0`
+   **Related Issue:** [Issue #6938](https://github.com/autowarefoundation/autoware.universe/issues/6938)
+   **Description:** This bag file contains data pertinent to the issue where the obstacle pointcloud-based validator node incorrectly removes small detected objects, such as traffic cones, identified by the CenterPoint node.
+2. **File:** `rosbag2_2024_06_18-17_11_08`
+   **Related Issue:** [Issue #7563](https://github.com/autowarefoundation/autoware.universe/issues/7563)
+   **Description:** This file is related to the issue where the perception system fails to detect and track pedestrians when they are close to the vehicle, recognizing them only after they have moved away.
+
+These files are intended to assist in reproducing the reported issues and aid in their resolution. You can download the data from Zenodo: https://doi.org/10.5281/zenodo.14209720. You can also download them using the following GoogleDrive link.
 
 1. https://drive.google.com/drive/folders/1aSsugDhv0ZhcLZzni5KLBpAu3Vr6lJqX?usp=share_link
 2. https://drive.google.com/drive/folders/1CtjPF1jNsm2bRsyisEOX7EJDEtoroJnX?usp=share_link
