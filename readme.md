@@ -626,7 +626,7 @@ Follow the same steps as described in Experiments E2. If you want to repeat grou
 
 - Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `~/ACsim/carla_autowar/loop_values.txt` ` ~/ACsim/carla_autoware/result.csv` and ` ~/ACsim/CausalAnalysis/(Execution_id)_object_(id)/_(failure_mode).csv`. Then clean these data folders for next experiments.
 
-### Common Issues and Resolutions
+### Common Issues and solutions
 
 When running experiments on autonomous driving systems, the complexity of the system and the high hardware requirements may lead to resource shortages. Below are some common issues and their corresponding solutions:
 
