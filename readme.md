@@ -181,6 +181,8 @@ mkdir -p /home/anonymous/ssd/
 
 **Note:** Replace `"anonymous"` with your actual path.
 
+**Recommendation for Storing ROS2 Bag Files**: Storing ROS2 bag files on an SSD rather than an HDD. Recording ROS2 bags in real-time can lead to read and write loss issues when using an HDD, as it may not handle the required data throughput efficiently. Additionally, ensure there is sufficient storage space available, as ROS2 bag files can be very large.
+
 ## Evaluation
 
 #### **File structure**
@@ -318,7 +320,7 @@ This experiment is just for demonstrating functionality, it is not enough for ca
 
 **[Data collection]**
 
-- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `(Execution_id)_object_(id)/_(failure_mode).csv` and ` ~/ACsim/CausalAnalysis`. Then clean these data folders for next experiments.
+- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `~/ACsim/carla_autowar/loop_values.txt` ` ~/ACsim/carla_autoware/result.csv` and ` ~/ACsim/CausalAnalysis/(Execution_id)_object_(id)/_(failure_mode).csv`. Then clean these data folders for next experiments.
 
 #### Experiment (E2)
 **[Real fault scenarios] [20 human-minutes + 200 compute-hours]:** This experiment aims to evaluate its effectiveness in real-world fault scenarios of groups 1-2, as detailed in [Table III].
@@ -399,7 +401,7 @@ This experiment is just for demonstrating functionality, it is not enough for ca
 
 3. **Failure Modes Configuration**: Configure failure mode arguments as `false_negative` in `ACsim/carla_autoware/param.py` based on definitions in TABLE I.
 
-4. **Lidar-Fusion Configuration**:
+4. **Lidar-Fusion dConfiguration**:
 
    - Change line 6, 10 in `ACsim/carla_autoware/perceptionIdentify/utils.py` to import specific modules for Lidar processing: from
 
@@ -453,7 +455,7 @@ This experiment is just for demonstrating functionality, it is not enough for ca
 
 **[Data collection]**
 
-- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `(Execution_id)_object_(id)/_(failure_mode).csv` and ` ~/ACsim/CausalAnalysis`. Then clean these data folders for next experiments.
+- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `~/ACsim/carla_autowar/loop_values.txt` ` ~/ACsim/carla_autoware/result.csv` and ` ~/ACsim/CausalAnalysis/(Execution_id)_object_(id)/_(failure_mode).csv`. Then clean these data folders for next experiments.
 
 #### Experiment (E3) 
 
@@ -523,7 +525,7 @@ The execution steps are the same as in E2, maintaining consistency across experi
 
 **[Data collection]**
 
-- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `(Execution_id)_object_(id)/_(failure_mode).csv` and ` ~/ACsim/CausalAnalysis`. Then clean these data folders for next experiments.
+- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `~/ACsim/carla_autowar/loop_values.txt` ` ~/ACsim/carla_autoware/result.csv` and ` ~/ACsim/CausalAnalysis/(Execution_id)_object_(id)/_(failure_mode).csv`. Then clean these data folders for next experiments.
 
 #### Experiment (E4)
 
@@ -622,7 +624,18 @@ Follow the same steps as described in Experiments E2. If you want to repeat grou
 
 **[Data collection]**
 
-- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `(Execution_id)_object_(id)/_(failure_mode).csv` and ` ~/ACsim/CausalAnalysis`. Then clean these data folders for next experiments.
+- Check the data files: please back up your data in `/home/anonymous/workspace/home/Data/ObjectData/` ，  `/home/anonymous/ssd/` ，  `~/ACsim/carla_autowar/loop_values.txt` ` ~/ACsim/carla_autoware/result.csv` and ` ~/ACsim/CausalAnalysis/(Execution_id)_object_(id)/_(failure_mode).csv`. Then clean these data folders for next experiments.
+
+### Common Issues and Resolutions
+
+When running experiments on autonomous driving systems, the complexity of the system and the high hardware requirements may lead to resource shortages. Below are some common issues and their corresponding solutions:
+
+1. **Blackscreen in Autoware**: Refer to issue https://github.com/autowarefoundation/autoware.universe/issues/6937 in Autoware
+   - **Cause**: This issue is typically caused by a temporary resource shortage.
+   - **Solution**: Wait for the system to recover automatically. If the issue persists, check the system resource usage.
+2. **Segmentation Fault (Core Dumped)**： Refer to issue https://github.com/carla-simulator/carla/issues/73 in Carla simulator
+   - **Cause**: This usually occurs because resources occupied by CARLA from previous experiments have not been released.
+   - **Solution**: Restart the experiment. If restarting the experiment takes too long or does not resolve the issue, try restarting the entire system to free up resources.
 
 ## Data link 
 
