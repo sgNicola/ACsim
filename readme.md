@@ -637,6 +637,9 @@ When running experiments on autonomous driving systems, the complexity of the sy
    - **Cause**: This usually occurs because resources occupied by CARLA from previous experiments have not been released.
    - **Solution**: Restart the experiment. If restarting the experiment takes too long or does not resolve the issue, try restarting the entire system to free up resources.
 
+3. **Backup and Restore for Autoware Settings**
+   - **Solution**: Prepare a backup of the Autoware configuration files (e.g., `.autoware` or `.ros` directories). If issues arise, restore the default settings by replacing the corrupted configuration files with the backup files. This ensures a clean state for troubleshooting and reconfiguration.
+
 ## Data link 
 
 We have submitted two ROS2 bag files that capture recorded fault scenarios, which have been verified by developers from the Autoware project:
