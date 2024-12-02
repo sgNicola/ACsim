@@ -21,14 +21,14 @@ IRCA is a root cause analysis frame work for root cause analysis in perception f
 
 ##### Additional Software and Tools:
 
-- **ROS 2 Dev Tools:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/main/ansible/roles/ros2_dev_tools#manual-installation)
-- **RMW Implementation:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/main/ansible/roles/rmw_implementation#manual-installation)
-- **Pacmod:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/main/ansible/roles/rmw_implementation#manual-installation)
-- **Autoware Core Dependencies:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/main/ansible/roles/autoware_core#manual-installation)
-- **Autoware Universe Dependencies:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/main/ansible/roles/autoware_universe#manual-installation)
-- **Pre-commit Dependencies:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/main/ansible/roles/pre_commit#manual-installation)
-- **Nvidia CUDA:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/main/ansible/roles/cuda#manual-installation)
-- **Nvidia cuDNN and TensorRT:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/main/ansible/roles/tensorrt#manual-installation)
+- **ROS 2 Dev Tools:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/galactic/ansible/roles/ros2_dev_tools#manual-installation)
+- **RMW Implementation:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/galactic/ansible/roles/rmw_implementation#manual-installation)
+- **Pacmod:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/galactic/ansible/roles/rmw_implementation#manual-installation)
+- **Autoware Core Dependencies:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/galactic/ansible/roles/autoware_core#manual-installation)
+- **Autoware Universe Dependencies:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/galactic/ansible/roles/autoware_universe#manual-installation)
+- **Pre-commit Dependencies:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/galactic/ansible/roles/pre_commit#manual-installation)
+- **Nvidia CUDA:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/galactic/ansible/roles/cuda#manual-installation)
+- **Nvidia cuDNN and TensorRT:** [Manual Installation Instructions](https://github.com/autowarefoundation/autoware/tree/galactic/ansible/roles/tensorrt#manual-installation)
 
 Please ensure all the above requirements are met and configured properly before proceeding with the project testing to avoid any compatibility or performance issues.
 
